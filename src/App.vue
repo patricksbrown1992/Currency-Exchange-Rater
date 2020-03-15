@@ -10,7 +10,8 @@
     <p>Amount</p>
     <input v-model='amt'>
     <button v-on:click = "getData">add</button>
-    {{res[res.length-1]}}
+    {{res}}
+    {{err}}
   </div>
 </template>
 
@@ -26,17 +27,25 @@ export default {
       originalCurrency: '',
       endCurrency: '',
       date: new Date().toJSON().slice(0,10),
-      res: [],
-      amt: 0
+      res: null,
+      amt: 0,
+      err: null,
 
     }
   },
   methods: {
     getData: function(){
+     
+      if(this.amt < 1){
+        this.err = 'Please enter a valid number'
+      } else {
+      this.err = null
+      this.res = null
       const settings = {"async": true,"crossDomain": true, "url": `https://currency-converter5.p.rapidapi.com/currency/convert?format=json&from=${this.originalCurrency}&to=${this.endCurrency}&amount=${this.amt}`,"method": "GET","headers": {"x-rapidapi-host": "currency-converter5.p.rapidapi.com", "x-rapidapi-key": "432cb85f3emshd2e70eeb3556d3bp144a56jsn06cbcafb135e"}}
-
-      jquery.ajax(settings).then(res => {this.res.push(Object.values(res.rates)[0].rate_for_amount)}) 
-
+  
+      jquery.ajax(settings).then(res => {this.res = Object.values(res.rates)[0].rate_for_amount}).catch(err => this.err = err.responseJSON.error.message)
+        
+      }
 
       
     }
