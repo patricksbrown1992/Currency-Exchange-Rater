@@ -35,16 +35,17 @@ export default {
   },
   methods: {
     getData: function(){
-     
-      if(this.amt < 1){
-        this.err = 'Please enter a valid number'
-      } else {
+
+    if (!isNaN(this.amt)) {
       this.err = null
       this.res = null
       const settings = {"async": true,"crossDomain": true, "url": `https://currency-converter5.p.rapidapi.com/currency/convert?format=json&from=${this.originalCurrency}&to=${this.endCurrency}&amount=${this.amt}`,"method": "GET","headers": {"x-rapidapi-host": "currency-converter5.p.rapidapi.com", "x-rapidapi-key": "432cb85f3emshd2e70eeb3556d3bp144a56jsn06cbcafb135e"}}
   
       jquery.ajax(settings).then(res => {this.res = Object.values(res.rates)[0].rate_for_amount}).catch(err => this.err = err.responseJSON.error.message)
         
+      } else {
+        this.res = null
+        this.err = 'Please enter a valid number'
       }
 
       
