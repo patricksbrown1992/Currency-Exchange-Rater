@@ -5,7 +5,7 @@
  
     <p>Original Currency</p>
     <select v-model='originalCurrency'>
-      <option >Select Currency:</option>
+
       <option value="AUD">AUD</option>
       <option value="BGN">BGN</option>
       <option value="BRL">BRL</option>
@@ -44,7 +44,7 @@
     <p>Desired Currency</p>
   
     <select v-model='endCurrency'>
-      <option >Select Currency:</option>
+
       <option value="AUD">AUD</option>
       <option value="BGN">BGN</option>
       <option value="BRL">BRL</option>
@@ -52,7 +52,7 @@
       <option value="CHF">CHF</option>
       <option value="CNY">CNY</option>
       <option value="CZK">CZK</option>
-      <option value="DEK">DKK</option>
+      <option value="DKK">DKK</option>
       <option value="EUR">EUR</option>
       <option value="GBP">GBP</option>
       <option value="HKD">HKD</option>
@@ -146,5 +146,10 @@ input{
   margin-top: 5px;
   margin-bottom: 35px;
 }
-
+select{
+  outline: none;
+}
+button{
+  margin-bottom: 10px;
+}
 </style>
