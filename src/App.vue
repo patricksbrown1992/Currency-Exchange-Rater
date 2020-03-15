@@ -13,7 +13,7 @@
       <option value="CHF">CHF</option>
       <option value="CNY">CNY</option>
       <option value="CZK">CZK</option>
-      <option value="DEK">DKK</option>
+      <option value="DKK">DKK</option>
       <option value="EUR">EUR</option>
       <option value="GBP">GBP</option>
       <option value="HKD">HKD</option>
